@@ -67,6 +67,7 @@ static const char* token_store_filename = "demo_token_store.bin";
 #include "picoquic_internal.h"
 #include "picoquic_utils.h"
 #include "picoquic_qlog.h"
+#include "picoquic_binlog.h"
 #include "h3zero.h"
 #include "h3zero_common.h"
 #include "pico_webtransport.h"
@@ -875,6 +876,11 @@ int quic_client(const char* ip_address_text, int server_port,
                 if (config->qlog_dir != NULL)
                 {
                     picoquic_set_qlog(qclient, config->qlog_dir);
+                }
+
+                if (config->bin_dir != NULL)
+                {
+                    picoquic_set_binlog(qclient, config->bin_dir);
                 }
 
                 if (config->performance_log != NULL)
