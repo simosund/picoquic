@@ -125,6 +125,7 @@
 #include "picoquic_config.h"
 #include "picoquic_lb.h"
 #include "picoquic_qlog.h"
+#include "picoquic_binlog.h"
 #include "performance_log.h"
 #include "picoquic_packet_loop.h"
 #include "picoquic_unified_log.h"
@@ -3308,6 +3309,10 @@ int picoquic_server_set_context(picoquic_quic_t** qserver,
             if (config->qlog_dir != NULL)
             {
                 picoquic_set_qlog(*qserver, config->qlog_dir);
+            }
+            if (config->bin_dir != NULL)
+            {
+                    picoquic_set_binlog(*qserver, config->bin_dir);
             }
             if (config->performance_log != NULL)
             {
